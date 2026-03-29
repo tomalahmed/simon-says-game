@@ -59,6 +59,8 @@ export class Game {
         this.bgMusic = false; // Maybe add background drone later?
 
         this.updateScoreUI();
+        this.ui.messageOverlay.classList.add('hidden');
+        this.ui.startBtn.classList.add('is-hidden');
         this.ui.startBtn.disabled = true;
         this.ui.startBtn.textContent = 'PLAYING';
         this.setStatus('active');
@@ -138,9 +140,10 @@ export class Game {
     gameOver() {
         this.isPlaying = false;
         this.isInputLocked = true;
-        this.audio.playError();
+        this.audio.playGameOver();
 
         this.setStatus('error');
+        this.ui.startBtn.classList.add('is-hidden');
         this.ui.startBtn.textContent = 'START';
         this.ui.startBtn.disabled = false;
 

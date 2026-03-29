@@ -1,6 +1,10 @@
+import gameOverSound from './assets/faaah.mp3';
+
 export class AudioController {
     constructor() {
         this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+        this.gameOverAudio = new Audio(gameOverSound);
+        this.gameOverAudio.preload = 'auto';
         this.frequencies = {
             green: 329.63, // E4
             red: 261.63,   // C4
@@ -56,5 +60,12 @@ export class AudioController {
 
         osc.start();
         osc.stop(this.ctx.currentTime + 0.5);
+    }
+
+    playGameOver() {
+        this.gameOverAudio.currentTime = 0;
+        this.gameOverAudio.play().catch(() => {
+            this.playError();
+        });
     }
 }
