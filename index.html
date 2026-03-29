@@ -1,13 +1,43 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./public/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-project</title>
+    <title>Simon Says - Smart Edition</title>
+    <meta name="description" content="A premium digital version of the famous Simon Says game with neon aesthetics.">
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <div class="game-container">
+        <header>
+          <h1>SIMON SAYS</h1>
+          <div class="score-display">
+            <span>SCORE: <span id="current-score">0</span></span>
+            <span>BEST: <span id="best-score">0</span></span>
+          </div>
+        </header>
+        
+        <div class="simon-board">
+          <button class="simon-btn" data-color="green" aria-label="Green"></button>
+          <button class="simon-btn" data-color="red" aria-label="Red"></button>
+          <button class="simon-btn" data-color="yellow" aria-label="Yellow"></button>
+          <button class="simon-btn" data-color="blue" aria-label="Blue"></button>
+          
+          <div class="center-control">
+            <button id="start-btn">START</button>
+            <div class="status-light" id="status-light"></div>
+          </div>
+        </div>
+
+        <div id="message-overlay" class="hidden">
+          <h2 id="message-text"></h2>
+          <button id="restart-btn">Try Again</button>
+        </div>
+      </div>
+    </div>
     <script type="module" src="/src/main.js"></script>
+    <!-- Background elements for visual flair -->
+    <div class="bg-glow"></div>
   </body>
 </html>
